@@ -29,9 +29,14 @@ lsmod | grep main
 sudo rmmod main
 ```
 
-最后，只需查看内核文件即可找到模块程序的输出信息。
+最后，只需查看内核日志即可找到模块程序的输出信息。
 
 ```bash
 sudo dmesg
 ```
 
+PS：为了保持工作目录的整洁与美观，可以采用以下命令清除生成的内核模块
+
+```bash
+make clean
+```
