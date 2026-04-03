@@ -22,7 +22,7 @@ void *check_rows(void *param) {
         bool seen[9] = {false};
         for (int j = 0; j < 9; j++) {
             int num = sudoku[i][j];
-            if (num < 1 || num > 10 || seen[num - 1]) {
+            if (num < 1 || num > 9 || seen[num - 1]) {
                 res[0] = 0;
                 pthread_exit(nullptr);
             }
@@ -37,7 +37,7 @@ void *check_cols(void *param) {
         bool seen[9] = {false};
         for (int i = 0; i < 9; i++) {
             int num = sudoku[i][j];
-            if (num < 1 || num > 10 || seen[num - 1]) {
+            if (num < 1 || num > 9 || seen[num - 1]) {
                 res[1] = 0;
                 pthread_exit(nullptr);
             }
@@ -54,9 +54,9 @@ void *check_blocks(void *param) {
     int id = data->index;
     bool seen[9] = {false};
     for (int i = begin_row; i < begin_row + 3; i++) {
-        for (int j = begin_col; j < begin_col; j++) {
+        for (int j = begin_col; j < begin_col + 3; j++) {
             int num = sudoku[i][j];
-            if (num < 1 || num > 10 || seen[num - 1]) {
+            if (num < 1 || num > 9 || seen[num - 1]) {
                 res[id] = 0;
                 pthread_exit(nullptr);
             }
